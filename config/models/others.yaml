@@ -55,33 +55,19 @@ models:
   #     input_per_1k: 0.7
   #     output_per_1k: 2.1
 
-  - name: cohere_command_r_plus
-    display_name: "Cohere Command R+"
-    version: "command-r-plus"
-    api_key_env: "COHERE_API_KEY"
-    max_tokens: 128000
-    context_window: 128000
-    strengths:
-      - "Enterprise focus"
-      - "Citation capabilities"
-      - "Hallucination reduction"
-    defaults:
-      temperature: 0.7
-      top_p: 0.9
-      max_tokens: 4096
-    cost:
-      input_per_1k: 3.0
-      output_per_1k: 15.0
+# Cohere Models Configuration
 
-  - name: cohere_command_a
+models:
+  - name: command_a_03_2025
     display_name: "Cohere Command A"
-    version: "command-a"
+    version: "command-a-03-2025"
     api_key_env: "COHERE_API_KEY"
     max_tokens: 128000
     context_window: 128000
     strengths:
       - "Enterprise focus"
-      - "Agent-oriented"
+      - "Agent-oriented capabilities"
+      - "Tool use and function calling"
       - "Task automation"
     defaults:
       temperature: 0.7
@@ -90,9 +76,129 @@ models:
     cost:
       input_per_1k: 3.0
       output_per_1k: 15.0
+    provider: "cohere"
 
-  - name: cohere_command_r
-    display_name: "Cohere Command R"
+  - name: command_r_plus_08_2024
+    display_name: "Cohere Command R+ 003"
+    version: "command-r-plus-08-2024"
+    api_key_env: "COHERE_API_KEY"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Enterprise focus"
+      - "Citation capabilities"
+      - "Hallucination reduction"
+      - "Advanced reasoning"
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      max_tokens: 4096
+    cost:
+      input_per_1k: 3.0
+      output_per_1k: 15.0
+    provider: "cohere"
+
+  - name: command_r_plus_04_2024
+    display_name: "Cohere Command R+ 002"
+    version: "command-r-plus-04-2024"
+    api_key_env: "COHERE_API_KEY"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Enterprise focus"
+      - "Citation capabilities"
+      - "Hallucination reduction"
+      - "Knowledge retrieval"
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      max_tokens: 4096
+    cost:
+      input_per_1k: 3.0
+      output_per_1k: 15.0
+    provider: "cohere"
+
+  - name: command_r_plus
+    display_name: "Cohere Command R+ 001"
+    version: "command-r-plus"
+    api_key_env: "COHERE_API_KEY"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Enterprise focus"
+      - "Citation capabilities"
+      - "Hallucination reduction"
+      - "Knowledge retrieval"
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      max_tokens: 4096
+    cost:
+      input_per_1k: 3.0
+      output_per_1k: 15.0
+    provider: "cohere"
+
+  - name: command_r_08_2024_v004
+    display_name: "Cohere Command R 004"
+    version: "command-r-08-2024"
+    api_key_env: "COHERE_API_KEY"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Enterprise focus"
+      - "Research capabilities"
+      - "Knowledge retrieval"
+      - "Factual accuracy"
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      max_tokens: 4096
+    cost:
+      input_per_1k: 1.0
+      output_per_1k: 5.0
+    provider: "cohere"
+
+  - name: command_r_08_2024_v003
+    display_name: "Cohere Command R 003"
+    version: "command-r-08-2024"
+    api_key_env: "COHERE_API_KEY"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Enterprise focus"
+      - "Research capabilities"
+      - "Knowledge retrieval"
+      - "Factual accuracy"
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      max_tokens: 4096
+    cost:
+      input_per_1k: 1.0
+      output_per_1k: 5.0
+    provider: "cohere"
+
+  - name: command_r_03_2024
+    display_name: "Cohere Command R 002"
+    version: "command-r-03-2024"
+    api_key_env: "COHERE_API_KEY"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Enterprise focus"
+      - "Research capabilities"
+      - "Knowledge retrieval"
+    defaults:
+      temperature: 0.7
+      top_p: 0.9
+      max_tokens: 4096
+    cost:
+      input_per_1k: 1.0
+      output_per_1k: 5.0
+    provider: "cohere"
+
+  - name: command_r
+    display_name: "Cohere Command R 001"
     version: "command-r"
     api_key_env: "COHERE_API_KEY"
     max_tokens: 128000
@@ -108,3 +214,4 @@ models:
     cost:
       input_per_1k: 1.0
       output_per_1k: 5.0
+    provider: "cohere"

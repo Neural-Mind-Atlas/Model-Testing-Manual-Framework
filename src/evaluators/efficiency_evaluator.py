@@ -57,6 +57,9 @@ class EfficiencyEvaluator:
 
         # Calculate cost metrics
         results["cost"] = cost
-        results["cost_per_1k_tokens"] = (cost * 1000) / total_tokens if total_tokens > 0 else 0
+        if total_tokens > 0:
+            results["cost_per_1k_tokens"] = (cost * 1000) / total_tokens
+        else:
+            results["cost_per_1k_tokens"] = 0
 
         return results

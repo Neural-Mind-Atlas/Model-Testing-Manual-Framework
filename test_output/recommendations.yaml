@@ -1,0 +1,164 @@
+timestamp: '2025-05-20T04:07:25.969980'
+scenarios:
+- name: best_overall
+  description: Best overall performer
+  weights:
+    overall_score: 1.0
+    reasoning: 1.0
+    factual: 1.0
+    hallucination: 1.0
+    instruction: 1.0
+    context: 1.0
+    creative: 0.8
+    code: 0.7
+    ppt_writing: 1.2
+    meta_prompting: 1.0
+    image_prompts: 0.9
+  recommended_models:
+  - rank: 1
+    model: model_1
+    score: 4.0
+  - rank: 2
+    model: model_2
+    score: 3.52859477124183
+  top_recommendations:
+  - rank: 1
+    model: model_1
+    score: 4.0
+    strengths:
+    - Best Overall Score
+    - Best Reasoning
+    - Best Factual
+    - Best Hallucination
+  - rank: 2
+    model: model_2
+    score: 3.52859477124183
+    strengths:
+    - Strong Overall Score
+    - Strong Reasoning
+    - Strong Factual
+    - Strong Hallucination
+- name: most_cost_effective
+  description: Most cost-effective model
+  weights:
+    cost: 2.0
+    overall_score: 1.0
+    reasoning: 0.8
+    factual: 0.8
+    hallucination: 0.8
+    instruction: 0.8
+    context: 0.8
+    ppt_writing: 1.0
+  recommended_models:
+  - rank: 1
+    model: model_1
+    score: 4.066666666666666
+  - rank: 2
+    model: model_2
+    score: 2.999346405228758
+  top_recommendations:
+  - rank: 1
+    model: model_1
+    score: 4.066666666666666
+    strengths:
+    - Lowest Cost
+    - Best Overall Score
+    - Best Reasoning
+    - Best Factual
+    - Best Hallucination
+  - rank: 2
+    model: model_2
+    score: 2.999346405228758
+    strengths:
+    - Strong Cost
+    - Strong Overall Score
+    - Strong Reasoning
+    - Strong Factual
+    - Strong Hallucination
+- name: best_for_ppt
+  description: Best model for PPT generation
+  weights:
+    ppt_writing: 2.0
+    context: 1.2
+    hallucination: 1.2
+    instruction: 1.0
+    creative: 0.9
+    image_prompts: 1.2
+  recommended_models:
+  - rank: 1
+    model: model_1
+    score: 1.2
+  - rank: 2
+    model: model_2
+    score: 1.0588235294117647
+  top_recommendations:
+  - rank: 1
+    model: model_1
+    score: 1.2
+    strengths:
+    - Best Hallucination
+  - rank: 2
+    model: model_2
+    score: 1.0588235294117647
+    strengths:
+    - Strong Hallucination
+- name: fastest
+  description: Fastest model with acceptable quality
+  weights:
+    overall_score: 0.8
+    response_time: 2.0
+    reasoning: 0.7
+    factual: 0.7
+    instruction: 0.7
+    ppt_writing: 0.8
+  recommended_models:
+  - rank: 1
+    model: model_1
+    score: 2.2
+  - rank: 2
+    model: model_2
+    score: 1.9406045751633987
+  top_recommendations:
+  - rank: 1
+    model: model_1
+    score: 2.2
+    strengths:
+    - Best Overall Score
+    - Best Reasoning
+    - Best Factual
+  - rank: 2
+    model: model_2
+    score: 1.9406045751633987
+    strengths:
+    - Strong Overall Score
+    - Strong Reasoning
+    - Strong Factual
+- name: best_reasoning
+  description: Best model for complex reasoning
+  weights:
+    reasoning: 2.0
+    factual: 1.2
+    context: 1.0
+    hallucination: 1.0
+  recommended_models:
+  - rank: 1
+    model: model_1
+    score: 4.2
+  - rank: 2
+    model: model_2
+    score: 3.710130718954248
+  top_recommendations:
+  - rank: 1
+    model: model_1
+    score: 4.2
+    strengths:
+    - Best Reasoning
+    - Best Factual
+    - Best Hallucination
+  - rank: 2
+    model: model_2
+    score: 3.710130718954248
+    strengths:
+    - Strong Reasoning
+    - Strong Factual
+    - Strong Hallucination

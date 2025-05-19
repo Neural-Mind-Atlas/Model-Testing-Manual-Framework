@@ -1,0 +1,647 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>LLM Testing Results</title>
+            <style>
+                body { 
+                    font-family: Arial, sans-serif; 
+                    margin: 20px; 
+                    color: #333;
+                    line-height: 1.6;
+                }
+                h1, h2, h3 { 
+                    color: #2c3e50; 
+                }
+                .container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+                .header {
+                    background-color: #f8f9fa;
+                    padding: 20px;
+                    border-radius: 5px;
+                    margin-bottom: 20px;
+                }
+                .model-card {
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }
+                .model-header {
+                    background-color: #f8f9fa;
+                    padding: 15px;
+                    border-bottom: 1px solid #ddd;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .model-body {
+                    padding: 15px;
+                }
+                .error {
+                    color: #dc3545;
+                    padding: 10px;
+                    background-color: #f8d7da;
+                    border-radius: 5px;
+                }
+                table { 
+                    border-collapse: collapse; 
+                    width: 100%; 
+                    margin-bottom: 20px;
+                }
+                th, td { 
+                    border: 1px solid #ddd; 
+                    padding: 8px; 
+                    text-align: left; 
+                }
+                th { 
+                    background-color: #f2f2f2; 
+                    position: sticky;
+                    top: 0;
+                }
+                tr:nth-child(even) { 
+                    background-color: #f9f9f9; 
+                }
+                .score { 
+                    font-weight: bold; 
+                }
+                .high { color: #28a745; }
+                .medium { color: #fd7e14; }
+                .low { color: #dc3545; }
+                .sample {
+                    background-color: #f8f9fa;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-family: monospace;
+                    white-space: pre-wrap;
+                    max-height: 300px;
+                    overflow-y: auto;
+                }
+                .metrics-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+                .metrics-section {
+                    flex: 1;
+                    min-width: 300px;
+                }
+                .collapsible {
+                    background-color: #f1f1f1;
+                    cursor: pointer;
+                    padding: 10px;
+                    width: 100%;
+                    border: none;
+                    text-align: left;
+                    outline: none;
+                    font-weight: bold;
+                }
+                .active, .collapsible:hover {
+                    background-color: #e0e0e0;
+                }
+                .content {
+                    padding: 0 18px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.2s ease-out;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>LLM Testing Results</h1>
+                    <p>Report generated on: 2025-05-20T04:37:38.910272</p>
+                </div>
+        
+        <h2>Summary</h2>
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Status</th>
+                <th>Overall Score</th>
+                <th>Test Category</th>
+                <th>Context Length</th>
+                <th>Cost</th>
+                <th>Tokens</th>
+            </tr>
+        
+                <tr>
+                    <td>mistral_small</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for mistral_small with provider mistral</td>
+                </tr>
+                
+                <tr>
+                    <td>mistral_medium</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for mistral_medium with provider mistral</td>
+                </tr>
+                
+                <tr>
+                    <td>mistral_large</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for mistral_large with provider mistral</td>
+                </tr>
+                
+                <tr>
+                    <td>claude_3_opus</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for claude_3_opus with provider anthropic</td>
+                </tr>
+                
+                <tr>
+                    <td>claude_3_5_sonnet</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for claude_3_5_sonnet with provider anthropic</td>
+                </tr>
+                
+                <tr>
+                    <td>claude_3_5_haiku</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for claude_3_5_haiku with provider anthropic</td>
+                </tr>
+                
+                <tr>
+                    <td>claude_3_7_sonnet</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for claude_3_7_sonnet with provider anthropic</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_2_5_pro_preview_05_06</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_2_5_pro_preview_05_06 with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_2_5_pro_preview_03_25</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_2_5_pro_preview_03_25 with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_2_5_pro_exp_03_25</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_2_5_pro_exp_03_25 with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_2_5_flash_preview_04_17</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_2_5_flash_preview_04_17 with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_2_5_flash_preview_04_17_thinking</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_2_5_flash_preview_04_17_thinking with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_2_0_pro_exp</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_2_0_pro_exp with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_2_0_flash</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_2_0_flash with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_2_0_flash_thinking_exp</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_2_0_flash_thinking_exp with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_1_5_pro</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_1_5_pro with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gemini_1_5_flash</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gemini_1_5_flash with provider google</td>
+                </tr>
+                
+                <tr>
+                    <td>gpt_4_5_preview</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gpt_4_5_preview with provider openai</td>
+                </tr>
+                
+                <tr>
+                    <td>gpt_4o</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gpt_4o with provider openai</td>
+                </tr>
+                
+                <tr>
+                    <td>gpt_4_1</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gpt_4_1 with provider openai</td>
+                </tr>
+                
+                <tr>
+                    <td>gpt_4_turbo</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for gpt_4_turbo with provider openai</td>
+                </tr>
+                
+                <tr>
+                    <td>o1_preview</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for o1_preview with provider openai</td>
+                </tr>
+                
+                <tr>
+                    <td>o1_pro</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for o1_pro with provider openai</td>
+                </tr>
+                
+                <tr>
+                    <td>command_a_03_2025</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for command_a_03_2025 with provider cohere</td>
+                </tr>
+                
+                <tr>
+                    <td>command_r_plus_08_2024</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for command_r_plus_08_2024 with provider cohere</td>
+                </tr>
+                
+                <tr>
+                    <td>command_r_plus_04_2024</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for command_r_plus_04_2024 with provider cohere</td>
+                </tr>
+                
+                <tr>
+                    <td>command_r_plus</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for command_r_plus with provider cohere</td>
+                </tr>
+                
+                <tr>
+                    <td>command_r_08_2024_v004</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for command_r_08_2024_v004 with provider cohere</td>
+                </tr>
+                
+                <tr>
+                    <td>command_r_08_2024_v003</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for command_r_08_2024_v003 with provider cohere</td>
+                </tr>
+                
+                <tr>
+                    <td>command_r_03_2024</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for command_r_03_2024 with provider cohere</td>
+                </tr>
+                
+                <tr>
+                    <td>command_r</td>
+                    <td class="low">Failed</td>
+                    <td colspan="5">Failed to initialize client for command_r with provider cohere</td>
+                </tr>
+                </table>
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>mistral_small</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for mistral_small with provider mistral</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>mistral_medium</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for mistral_medium with provider mistral</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>mistral_large</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for mistral_large with provider mistral</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>claude_3_opus</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for claude_3_opus with provider anthropic</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>claude_3_5_sonnet</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for claude_3_5_sonnet with provider anthropic</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>claude_3_5_haiku</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for claude_3_5_haiku with provider anthropic</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>claude_3_7_sonnet</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for claude_3_7_sonnet with provider anthropic</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_2_5_pro_preview_05_06</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_2_5_pro_preview_05_06 with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_2_5_pro_preview_03_25</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_2_5_pro_preview_03_25 with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_2_5_pro_exp_03_25</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_2_5_pro_exp_03_25 with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_2_5_flash_preview_04_17</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_2_5_flash_preview_04_17 with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_2_5_flash_preview_04_17_thinking</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_2_5_flash_preview_04_17_thinking with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_2_0_pro_exp</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_2_0_pro_exp with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_2_0_flash</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_2_0_flash with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_2_0_flash_thinking_exp</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_2_0_flash_thinking_exp with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_1_5_pro</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_1_5_pro with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gemini_1_5_flash</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gemini_1_5_flash with provider google</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gpt_4_5_preview</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gpt_4_5_preview with provider openai</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gpt_4o</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gpt_4o with provider openai</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gpt_4_1</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gpt_4_1 with provider openai</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>gpt_4_turbo</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for gpt_4_turbo with provider openai</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>o1_preview</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for o1_preview with provider openai</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>o1_pro</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for o1_pro with provider openai</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>command_a_03_2025</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for command_a_03_2025 with provider cohere</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>command_r_plus_08_2024</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for command_r_plus_08_2024 with provider cohere</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>command_r_plus_04_2024</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for command_r_plus_04_2024 with provider cohere</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>command_r_plus</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for command_r_plus with provider cohere</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>command_r_08_2024_v004</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for command_r_08_2024_v004 with provider cohere</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>command_r_08_2024_v003</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for command_r_08_2024_v003 with provider cohere</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>command_r_03_2024</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for command_r_03_2024 with provider cohere</div>
+                </div>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-header">
+                    <h2>command_r</h2>
+                    <span class="score low">Failed</span>
+                </div>
+                <div class="model-body">
+                    <div class="error">Failed to initialize client for command_r with provider cohere</div>
+                </div>
+            </div>
+            
+            </div>
+            <script>
+                // Add collapsible behavior
+                var coll = document.getElementsByClassName("collapsible");
+                for (var i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+                }
+            </script>
+        </body>
+        </html>
+        

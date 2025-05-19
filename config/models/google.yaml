@@ -1,41 +1,219 @@
+# # Google Models Configuration
+
+# models:
+#   - name: gemini_1_5_pro
+#     display_name: "Gemini 1.5 Pro"
+#     version: "gemini-1.5-pro"
+#     api_key_env: "GOOGLE_API_KEY"
+#     max_tokens: 1000000
+#     context_window: 1000000
+#     strengths:
+#       - "Extremely long context window"
+#       - "Multimodal capabilities"
+#       - "Advanced reasoning"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 0.95
+#       max_output_tokens: 8192
+#     cost:
+#       input_per_1k: 3.5
+#       output_per_1k: 10.0
+
+#   - name: gemini_1_5_flash
+#     display_name: "Gemini 1.5 Flash"
+#     version: "gemini-1.5-flash"
+#     api_key_env: "GOOGLE_API_KEY"
+#     max_tokens: 1000000
+#     context_window: 1000000
+#     strengths:
+#       - "Fast inference"
+#       - "Cost efficiency"
+#       - "Long context capabilities"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 0.95
+#       max_output_tokens: 8192
+#     cost:
+#       input_per_1k: 0.35
+#       output_per_1k: 1.05
+
+#   - name: gemini_2_0_flash
+#     display_name: "Gemini 2.0 Flash"
+#     version: "gemini-2.0-flash"
+#     api_key_env: "GOOGLE_API_KEY"
+#     max_tokens: 1000000
+#     context_window: 1000000
+#     strengths:
+#       - "Latest Google capabilities"
+#       - "Balance of speed and quality"
+#       - "Enhanced instruction following"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 0.95
+#       max_output_tokens: 8192
+#     cost:
+#       input_per_1k: 0.7
+#       output_per_1k: 2.1
+
+#   - name: gemini_2_0_flash_thinking
+#     display_name: "Gemini 2.0 Flash Thinking"
+#     version: "gemini-2.0-flash-thinking"
+#     api_key_env: "GOOGLE_API_KEY"
+#     max_tokens: 1000000
+#     context_window: 1000000
+#     strengths:
+#       - "Chain-of-thought capabilities"
+#       - "Enhanced reasoning"
+#       - "Step-by-step problem solving"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 0.95
+#       max_output_tokens: 8192
+#     cost:
+#       input_per_1k: 0.7
+#       output_per_1k: 2.1
+
+#   - name: gemini_2_5_pro
+#     display_name: "Gemini 2.5 Pro"
+#     version: "gemini-2.5-pro"
+#     api_key_env: "GOOGLE_API_KEY"
+#     max_tokens: 1000000
+#     context_window: 1000000
+#     strengths:
+#       - "Cutting edge Google model"
+#       - "Best reasoning capabilities"
+#       - "Advanced multimodal understanding"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 0.95
+#       max_output_tokens: 8192
+#     cost:
+#       input_per_1k: 7.0
+#       output_per_1k: 21.0
+
 # Google Models Configuration
 
 models:
-  - name: gemini_1_5_pro
-    display_name: "Gemini 1.5 Pro"
-    version: "gemini-1.5-pro"
+  - name: gemini_2_5_pro_preview_05_06
+    display_name: "Gemini 2.5 Pro Preview 05-06"
+    version: "gemini-2.5-pro-preview-05-06"
     api_key_env: "GOOGLE_API_KEY"
     max_tokens: 1000000
     context_window: 1000000
     strengths:
-      - "Extremely long context window"
-      - "Multimodal capabilities"
+      - "Latest cutting-edge capabilities"
       - "Advanced reasoning"
+      - "Multimodal understanding"
+      - "Tool use and function calling"
+      - "Complex problem solving"
+    defaults:
+      temperature: 0.7
+      top_p: 0.95
+      max_output_tokens: 8192
+    cost:
+      input_per_1k: 7.0
+      output_per_1k: 21.0
+    provider: "google"
+
+  - name: gemini_2_5_pro_preview_03_25
+    display_name: "Gemini 2.5 Pro Preview 03-25"
+    version: "gemini-2.5-pro-preview-03-25"
+    api_key_env: "GOOGLE_API_KEY"
+    max_tokens: 1000000
+    context_window: 1000000
+    strengths:
+      - "Advanced multimodal capabilities"
+      - "Superior reasoning"
+      - "Long context handling"
+      - "Improved instruction following"
+    defaults:
+      temperature: 0.7
+      top_p: 0.95
+      max_output_tokens: 8192
+    cost:
+      input_per_1k: 7.0
+      output_per_1k: 21.0
+    provider: "google"
+
+  - name: gemini_2_5_pro_exp_03_25
+    display_name: "Gemini 2.5 Pro Experimental 03-25"
+    version: "gemini-2.5-pro-exp-03-25"
+    api_key_env: "GOOGLE_API_KEY"
+    max_tokens: 1000000
+    context_window: 1000000
+    strengths:
+      - "Experimental capabilities"
+      - "Advanced reasoning"
+      - "Enhanced creative generation"
+      - "Rapid prototyping"
+    defaults:
+      temperature: 0.7
+      top_p: 0.95
+      max_output_tokens: 8192
+    cost:
+      input_per_1k: 7.0
+      output_per_1k: 21.0
+    provider: "google"
+
+  - name: gemini_2_5_flash_preview_04_17
+    display_name: "Gemini 2.5 Flash Preview 04-17"
+    version: "gemini-2.5-flash-preview-04-17"
+    api_key_env: "GOOGLE_API_KEY"
+    max_tokens: 1000000
+    context_window: 1000000
+    strengths:
+      - "High speed inference"
+      - "Cost efficiency"
+      - "Good reasoning capabilities"
+      - "Long context handling"
+    defaults:
+      temperature: 0.7
+      top_p: 0.95
+      max_output_tokens: 8192
+    cost:
+      input_per_1k: 0.7
+      output_per_1k: 2.1
+    provider: "google"
+
+  - name: gemini_2_5_flash_preview_04_17_thinking
+    display_name: "Gemini 2.5 Flash Preview 04-17 thinking"
+    version: "gemini-2.5-flash-preview-04-17-thinking"
+    api_key_env: "GOOGLE_API_KEY"
+    max_tokens: 1000000
+    context_window: 1000000
+    strengths:
+      - "Chain-of-thought capabilities"
+      - "Enhanced reasoning"
+      - "Step-by-step problem solving"
+      - "Cost effective reasoning"
+    defaults:
+      temperature: 0.7
+      top_p: 0.95
+      max_output_tokens: 8192
+    cost:
+      input_per_1k: 0.7
+      output_per_1k: 2.1
+    provider: "google"
+
+  - name: gemini_2_0_pro_exp
+    display_name: "Gemini 2.0 Pro Experimental"
+    version: "gemini-2.0-pro-exp"
+    api_key_env: "GOOGLE_API_KEY"
+    max_tokens: 1000000
+    context_window: 1000000
+    strengths:
+      - "Experimental features"
+      - "Research capabilities"
+      - "Advanced multimodal understanding"
+      - "Technical problem solving"
     defaults:
       temperature: 0.7
       top_p: 0.95
       max_output_tokens: 8192
     cost:
       input_per_1k: 3.5
-      output_per_1k: 10.0
-
-  - name: gemini_1_5_flash
-    display_name: "Gemini 1.5 Flash"
-    version: "gemini-1.5-flash"
-    api_key_env: "GOOGLE_API_KEY"
-    max_tokens: 1000000
-    context_window: 1000000
-    strengths:
-      - "Fast inference"
-      - "Cost efficiency"
-      - "Long context capabilities"
-    defaults:
-      temperature: 0.7
-      top_p: 0.95
-      max_output_tokens: 8192
-    cost:
-      input_per_1k: 0.35
-      output_per_1k: 1.05
+      output_per_1k: 10.5
+    provider: "google"
 
   - name: gemini_2_0_flash
     display_name: "Gemini 2.0 Flash"
@@ -47,6 +225,7 @@ models:
       - "Latest Google capabilities"
       - "Balance of speed and quality"
       - "Enhanced instruction following"
+      - "Cost efficiency"
     defaults:
       temperature: 0.7
       top_p: 0.95
@@ -54,10 +233,11 @@ models:
     cost:
       input_per_1k: 0.7
       output_per_1k: 2.1
+    provider: "google"
 
-  - name: gemini_2_0_flash_thinking
-    display_name: "Gemini 2.0 Flash Thinking"
-    version: "gemini-2.0-flash-thinking"
+  - name: gemini_2_0_flash_thinking_exp
+    display_name: "Gemini 2.0 Flash Thinking Experimental"
+    version: "gemini-2.0-flash-thinking-exp"
     api_key_env: "GOOGLE_API_KEY"
     max_tokens: 1000000
     context_window: 1000000
@@ -65,6 +245,7 @@ models:
       - "Chain-of-thought capabilities"
       - "Enhanced reasoning"
       - "Step-by-step problem solving"
+      - "Experimental thinking features"
     defaults:
       temperature: 0.7
       top_p: 0.95
@@ -72,21 +253,44 @@ models:
     cost:
       input_per_1k: 0.7
       output_per_1k: 2.1
+    provider: "google"
 
-  - name: gemini_2_5_pro
-    display_name: "Gemini 2.5 Pro"
-    version: "gemini-2.5-pro"
+  - name: gemini_1_5_pro
+    display_name: "Gemini 1.5 Pro"
+    version: "gemini-1.5-pro"
     api_key_env: "GOOGLE_API_KEY"
     max_tokens: 1000000
     context_window: 1000000
     strengths:
-      - "Cutting edge Google model"
-      - "Best reasoning capabilities"
-      - "Advanced multimodal understanding"
+      - "Extremely long context window"
+      - "Multimodal capabilities"
+      - "Advanced reasoning"
+      - "Versatile applications"
     defaults:
       temperature: 0.7
       top_p: 0.95
       max_output_tokens: 8192
     cost:
-      input_per_1k: 7.0
-      output_per_1k: 21.0
+      input_per_1k: 3.5
+      output_per_1k: 10.0
+    provider: "google"
+
+  - name: gemini_1_5_flash
+    display_name: "Gemini 1.5 Flash"
+    version: "gemini-1.5-flash"
+    api_key_env: "GOOGLE_API_KEY"
+    max_tokens: 1000000
+    context_window: 1000000
+    strengths:
+      - "Fast inference"
+      - "Cost efficiency"
+      - "Long context capabilities"
+      - "Good quality to cost ratio"
+    defaults:
+      temperature: 0.7
+      top_p: 0.95
+      max_output_tokens: 8192
+    cost:
+      input_per_1k: 0.35
+      output_per_1k: 1.05
+    provider: "google"

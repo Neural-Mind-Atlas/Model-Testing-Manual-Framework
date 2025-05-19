@@ -24,9 +24,4 @@ This framework provides a systematic approach to evaluate various large language
 - **Detailed Reporting**: YAML results, comparative matrices, visualizations
 - **Cost Analysis**: Track and compare cost-efficiency metrics
 
-## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/foundation-llm-testing.git
-   cd foundation-llm-testing

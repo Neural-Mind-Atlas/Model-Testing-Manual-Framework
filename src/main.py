@@ -4,20 +4,27 @@ import sys
 import argparse
 import yaml
 import logging
-from src.utils.config import load_config
+from datetime import datetime
+from src.utils.config import load_config, get_model_config
 from src.test_runner.executor import TestExecutor
 from src.reporting.yaml_generator import YAMLReporter
+from src.test_runner.logger import TestLogger
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("test_run.log"),
-        logging.StreamHandler(sys.stdout)
-    ]
-)
-logger = logging.getLogger(__name__)
+def setup_logging():
+    """Configure logging for the application"""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_dir = "logs"
+    os.makedirs(log_dir, exist_ok=True)
+    
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(os.path.join(log_dir, f"test_run_{timestamp}.log")),
+            logging.StreamHandler(sys.stdout)
+        ]
+    )
+    return logging.getLogger(__name__)
 
 def get_available_models():
     """Load available models from configuration files"""
@@ -79,24 +86,36 @@ def get_available_models():
                                         model['provider'] = provider
                                 models[model_id] = model
             except Exception as e:
-                logger.error(f"Error loading model config file {file_path}: {e}")
+                logging.error(f"Error loading model config file {file_path}: {e}")
 
     return models
 
+def get_test_suite_config(test_category):
+    """Get configuration for a specific test suite"""
+    test_suite_path = os.path.join("config", "test_suites", f"{test_category}.yaml")
+    if os.path.exists(test_suite_path):
+        with open(test_suite_path, 'r') as file:
+            return yaml.safe_load(file)
+    return None
+
 def main():
+    logger = setup_logging()
+    
     parser = argparse.ArgumentParser(description="LLM Testing Framework")
     parser.add_argument('--model', type=str, help='Specific model to test')
     parser.add_argument('--models', type=str, help='Comma-separated list of models to test')
     parser.add_argument('--all-models', action='store_true', help='Test all available models')
-    parser.add_argument('--test', type=str, default='ppt_generation',
-                        help='Test category to run (default: ppt_generation)')
+    parser.add_argument('--test', type=str, default='ppt_writing',
+                        help='Test category to run (default: ppt_writing)')
     parser.add_argument('--context', type=str, default='short',
                         choices=['short', 'medium', 'long'],
                         help='Context length for testing')
-    parser.add_argument('--output', type=str, default='console',
+    parser.add_argument('--output', type=str, default='yaml',
                         choices=['console', 'json', 'yaml', 'html'],
                         help='Output format for results')
     parser.add_argument('--verbose', action='store_true', help='Enable verbose logging')
+    parser.add_argument('--eval-model', type=str, default='gpt_4o',
+                        help='Model to use for evaluation (default: gpt_4o)')
 
     args = parser.parse_args()
 
@@ -137,8 +156,30 @@ def main():
 
     logger.info(f"Testing {len(valid_models)} models: {', '.join(valid_models)}")
 
+    # Load test suite configuration
+    test_suite = get_test_suite_config(args.test)
+    if not test_suite:
+        logger.warning(f"No specific configuration found for test category {args.test}. Using default settings.")
+        test_suite = {
+            "name": args.test,
+            "description": f"Tests for {args.test}",
+            "weight": 1.0,
+            "test_cases": []
+        }
+
+    # Set up the evaluation model
+    eval_model_id = args.eval_model
+    logger.info(f"Using {eval_model_id} for evaluation")
+
     # Create test executor
     executor = TestExecutor()
+    
+    # If the eval model is specified, initialize it
+    if eval_model_id and eval_model_id in available_models:
+        eval_model_config = available_models[eval_model_id]
+        executor.default_eval_model_id = eval_model_id
+    else:
+        logger.warning(f"Evaluation model {eval_model_id} not found. Using default evaluation.")
 
     # Run tests for each model
     results = {}
@@ -155,37 +196,104 @@ def main():
             results[model_id] = test_result
             logger.info(f"Testing completed for {model_id}")
         except Exception as e:
-            logger.error(f"Error testing model {model_id}: {e}")
+            logger.error(f"Error testing model {model_id}: {e}", exc_info=True)
+            results[model_id] = {
+                "model_id": model_id,
+                "test_category": args.test,
+                "context_length": args.context,
+                "error": str(e)
+            }
 
     # Generate reports
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_dir = os.path.join("results", args.test)
     os.makedirs(output_dir, exist_ok=True)
 
     # Choose reporter based on output format
     if args.output == 'yaml':
         reporter = YAMLReporter()
-        output_file = os.path.join(output_dir, f"test_results_{args.context}.yaml")
+        output_file = os.path.join(output_dir, f"test_results_{args.context}_{timestamp}.yaml")
         reporter.generate_report(results, output_file)
         logger.info(f"Results saved to {output_file}")
     elif args.output == 'json':
         from src.reporting.json_generator import JSONReporter
         reporter = JSONReporter()
-        output_file = os.path.join(output_dir, f"test_results_{args.context}.json")
+        output_file = os.path.join(output_dir, f"test_results_{args.context}_{timestamp}.json")
         reporter.generate_report(results, output_file)
         logger.info(f"Results saved to {output_file}")
     elif args.output == 'html':
         from src.reporting.html_generator import HTMLReporter
         reporter = HTMLReporter()
-        output_file = os.path.join(output_dir, f"test_results_{args.context}.html")
+        output_file = os.path.join(output_dir, f"test_results_{args.context}_{timestamp}.html")
         reporter.generate_report(results, output_file)
         logger.info(f"Results saved to {output_file}")
     else:
         # Console output
         for model_id, result in results.items():
             print(f"\n=== Results for {model_id} ===")
+            if "error" in result:
+                print(f"Error: {result['error']}")
+                continue
+                
             print(f"Overall score: {result.get('overall_score', 'N/A')}")
-            for metric, score in result.get('metrics', {}).items():
-                print(f"  {metric}: {score}")
+            print(f"Test category: {result.get('test_category', 'N/A')}")
+            print(f"Context length: {result.get('context_length', 'N/A')}")
+            
+            if "metrics" in result:
+                print("\nMetrics:")
+                for metric_name, metric_value in result["metrics"].items():
+                    if isinstance(metric_value, dict):
+                        print(f"  {metric_name}:")
+                        for sub_metric, sub_value in metric_value.items():
+                            print(f"    {sub_metric}: {sub_value}")
+                    else:
+                        print(f"  {metric_name}: {metric_value}")
+            
+            if "usage" in result:
+                print("\nToken usage:")
+                for usage_name, usage_value in result["usage"].items():
+                    print(f"  {usage_name}: {usage_value}")
+            
+            if "timing" in result:
+                print("\nTiming:")
+                for timing_name, timing_value in result["timing"].items():
+                    print(f"  {timing_name}: {timing_value:.2f} seconds")
+            
+            if "cost" in result:
+                print(f"\nEstimated cost: ${result['cost']:.6f}")
+
+    # Generate comparison report if multiple models were tested
+    if len(valid_models) > 1:
+        from src.reporting.comparisons_reporter import ModelComparison
+        comparisons_dir = os.path.join("results", "comparisons")
+        os.makedirs(comparisons_dir, exist_ok=True)
+        
+        comparison = ModelComparison(results_dir=os.path.dirname(output_dir))
+        comparison_file = os.path.join(comparisons_dir, f"comparison_{args.test}_{args.context}_{timestamp}.yaml")
+        
+        try:
+            # Format results for comparison
+            formatted_results = {}
+            for model_id, result in results.items():
+                if "error" not in result:
+                    formatted_results[model_id] = {
+                        "model": model_id,
+                        "test_category": args.test,
+                        "context_length": args.context,
+                        "aggregate_metrics": {
+                            "overall_score": result.get("overall_score", 0),
+                            "total_tokens": result.get("usage", {}).get("total_tokens", 0),
+                            "total_cost_usd": result.get("cost", 0),
+                            "average_processing_time_seconds": result.get("timing", {}).get("total_time", 0)
+                        }
+                    }
+            
+            # Generate comparison if there are valid results
+            if formatted_results:
+                comparison.generate_comparison(formatted_results, output_file=comparison_file)
+                logger.info(f"Comparison report saved to {comparison_file}")
+        except Exception as e:
+            logger.error(f"Error generating comparison report: {e}", exc_info=True)
 
     logger.info("Testing completed successfully")
 

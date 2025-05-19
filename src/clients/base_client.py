@@ -17,16 +17,26 @@ class BaseClient(ABC):
             model_config: Dictionary containing model configuration
         """
         self.name = "base"
+        self.api_key = api_key
+        self.model_config = model_config
 
         if model_config:
             self.model_name = model_config.get("name", "unknown")
             self.display_name = model_config.get("display_name", "Unknown Model")
             self.version = model_config.get("version", "1.0")
-            self.api_key = api_key
             self.max_tokens = model_config.get("max_tokens", 4096)
             self.context_window = model_config.get("context_window", 4096)
             self.defaults = model_config.get("defaults", {})
             self.cost_config = model_config.get("cost", {})
+        else:
+            # Set default values if no config provided
+            self.model_name = "unknown"
+            self.display_name = "Unknown Model"
+            self.version = "1.0"
+            self.max_tokens = 4096
+            self.context_window = 4096
+            self.defaults = {}
+            self.cost_config = {}
 
     @abstractmethod
     def generate(self, prompt: str, config: Optional[Dict[str, Any]] = None) -> str:

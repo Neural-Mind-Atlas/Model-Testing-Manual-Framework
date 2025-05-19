@@ -1,0 +1,70 @@
+timestamp: '2025-05-20T03:33:32.911481'
+cost_metrics:
+  models:
+  - model_1
+  - model_2
+  metrics:
+  - total_cost_usd
+  - average_cost_per_request
+  - total_tokens
+  - overall_score
+  - cost_per_1k_tokens
+  - overall_score_per_dollar
+  data:
+    model_1:
+      total_cost_usd: 0.01
+      average_cost_per_request: 0.01
+      total_tokens: 300
+      overall_score: 0.85
+      cost_per_1k_tokens: 0.03333333333333333
+      overall_score_per_dollar: 85.0
+    model_2:
+      total_cost_usd: 0.015
+      average_cost_per_request: 0.015
+      total_tokens: 350
+      overall_score: 0.75
+      cost_per_1k_tokens: 0.04285714285714286
+      overall_score_per_dollar: 50.0
+rankings:
+  total_cost_usd:
+  - rank: 1
+    model: model_1
+    value: 0.01
+  - rank: 2
+    model: model_2
+    value: 0.015
+  average_cost_per_request:
+  - rank: 1
+    model: model_1
+    value: 0.01
+  - rank: 2
+    model: model_2
+    value: 0.015
+  total_tokens:
+  - rank: 1
+    model: model_2
+    value: 350
+  - rank: 2
+    model: model_1
+    value: 300
+  overall_score:
+  - rank: 1
+    model: model_1
+    value: 0.85
+  - rank: 2
+    model: model_2
+    value: 0.75
+  cost_per_1k_tokens:
+  - rank: 1
+    model: model_1
+    value: 0.03333333333333333
+  - rank: 2
+    model: model_2
+    value: 0.04285714285714286
+  overall_score_per_dollar:
+  - rank: 1
+    model: model_1
+    value: 85.0
+  - rank: 2
+    model: model_2
+    value: 50.0

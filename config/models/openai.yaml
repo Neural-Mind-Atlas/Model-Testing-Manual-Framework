@@ -1,66 +1,89 @@
+# # OpenAI Models Configuration
+
+# models:
+#   - name: gpt_4o
+#     display_name: "GPT-4o"
+#     version: "gpt-4o-2024-05-13"
+#     api_key_env: "OPENAI_API_KEY"
+#     org_id_env: "OPENAI_ORG_ID"
+#     max_tokens: 128000
+#     context_window: 128000
+#     strengths:
+#       - "Multimodal capabilities"
+#       - "Fast inference"
+#       - "Balanced performance"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 1.0
+#       max_tokens: 4096
+#     cost:
+#       input_per_1k: 5.0
+#       output_per_1k: 15.0
+
+#   - name: gpt_4_turbo
+#     display_name: "GPT-4 Turbo"
+#     version: "gpt-4-turbo-2024-04-09"
+#     api_key_env: "OPENAI_API_KEY"
+#     org_id_env: "OPENAI_ORG_ID"
+#     max_tokens: 128000
+#     context_window: 128000
+#     strengths:
+#       - "Speed optimization"
+#       - "Cost efficiency"
+#       - "General purpose reasoning"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 1.0
+#       max_tokens: 4096
+#     cost:
+#       input_per_1k: 10.0
+#       output_per_1k: 30.0
+
+#   - name: gpt_4_1
+#     display_name: "GPT-4.1"
+#     version: "gpt-4-1106-preview"
+#     api_key_env: "OPENAI_API_KEY"
+#     org_id_env: "OPENAI_ORG_ID"
+#     max_tokens: 128000
+#     context_window: 128000
+#     strengths:
+#       - "Latest reasoning abilities"
+#       - "Enhanced creative generation"
+#       - "Improved instruction following"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 1.0
+#       max_tokens: 4096
+#     cost:
+#       input_per_1k: 10.0
+#       output_per_1k: 30.0
+
+#   - name: gpt_4_5_preview
+#     display_name: "GPT-4.5 Preview"
+#     version: "gpt-4-0125-preview"
+#     api_key_env: "OPENAI_API_KEY"
+#     org_id_env: "OPENAI_ORG_ID"
+#     max_tokens: 128000
+#     context_window: 128000
+#     strengths:
+#       - "Cutting edge capabilities"
+#       - "Latest parameter updates"
+#       - "Advanced reasoning"
+#     defaults:
+#       temperature: 0.7
+#       top_p: 1.0
+#       max_tokens: 4096
+#     cost:
+#       input_per_1k: 10.0
+#       output_per_1k: 30.0
+
+
 # OpenAI Models Configuration
 
 models:
-  - name: gpt_4o
-    display_name: "GPT-4o"
-    version: "gpt-4o-2024-05-13"
-    api_key_env: "OPENAI_API_KEY"
-    org_id_env: "OPENAI_ORG_ID"
-    max_tokens: 128000
-    context_window: 128000
-    strengths:
-      - "Multimodal capabilities"
-      - "Fast inference"
-      - "Balanced performance"
-    defaults:
-      temperature: 0.7
-      top_p: 1.0
-      max_tokens: 4096
-    cost:
-      input_per_1k: 5.0
-      output_per_1k: 15.0
-
-  - name: gpt_4_turbo
-    display_name: "GPT-4 Turbo"
-    version: "gpt-4-turbo-2024-04-09"
-    api_key_env: "OPENAI_API_KEY"
-    org_id_env: "OPENAI_ORG_ID"
-    max_tokens: 128000
-    context_window: 128000
-    strengths:
-      - "Speed optimization"
-      - "Cost efficiency"
-      - "General purpose reasoning"
-    defaults:
-      temperature: 0.7
-      top_p: 1.0
-      max_tokens: 4096
-    cost:
-      input_per_1k: 10.0
-      output_per_1k: 30.0
-
-  - name: gpt_4_1
-    display_name: "GPT-4.1"
-    version: "gpt-4-1106-preview"
-    api_key_env: "OPENAI_API_KEY"
-    org_id_env: "OPENAI_ORG_ID"
-    max_tokens: 128000
-    context_window: 128000
-    strengths:
-      - "Latest reasoning abilities"
-      - "Enhanced creative generation"
-      - "Improved instruction following"
-    defaults:
-      temperature: 0.7
-      top_p: 1.0
-      max_tokens: 4096
-    cost:
-      input_per_1k: 10.0
-      output_per_1k: 30.0
-
   - name: gpt_4_5_preview
     display_name: "GPT-4.5 Preview"
-    version: "gpt-4-0125-preview"
+    version: "gpt-4.5-preview"
     api_key_env: "OPENAI_API_KEY"
     org_id_env: "OPENAI_ORG_ID"
     max_tokens: 128000
@@ -69,6 +92,8 @@ models:
       - "Cutting edge capabilities"
       - "Latest parameter updates"
       - "Advanced reasoning"
+      - "Enhanced creative generation"
+      - "Superior instruction following"
     defaults:
       temperature: 0.7
       top_p: 1.0
@@ -76,3 +101,111 @@ models:
     cost:
       input_per_1k: 10.0
       output_per_1k: 30.0
+    provider: "openai"
+
+  - name: gpt_4o
+    display_name: "GPT-4o"
+    version: "gpt-4o"
+    api_key_env: "OPENAI_API_KEY"
+    org_id_env: "OPENAI_ORG_ID"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Multimodal capabilities"
+      - "Fast inference"
+      - "Balanced performance"
+      - "Vision processing"
+    defaults:
+      temperature: 0.7
+      top_p: 1.0
+      max_tokens: 4096
+    cost:
+      input_per_1k: 5.0
+      output_per_1k: 15.0
+    provider: "openai"
+
+  - name: gpt_4_1
+    display_name: "GPT-4.1"
+    version: "gpt-4.1"
+    api_key_env: "OPENAI_API_KEY"
+    org_id_env: "OPENAI_ORG_ID"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Latest reasoning abilities"
+      - "Enhanced creative generation"
+      - "Improved instruction following"
+      - "Code generation"
+    defaults:
+      temperature: 0.7
+      top_p: 1.0
+      max_tokens: 4096
+    cost:
+      input_per_1k: 10.0
+      output_per_1k: 30.0
+    provider: "openai"
+
+  - name: gpt_4_turbo
+    display_name: "GPT-4 Turbo"
+    version: "gpt-4-turbo"
+    api_key_env: "OPENAI_API_KEY"
+    org_id_env: "OPENAI_ORG_ID"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Speed optimization"
+      - "Cost efficiency"
+      - "General purpose reasoning"
+      - "Knowledge cutoff improvements"
+    defaults:
+      temperature: 0.7
+      top_p: 1.0
+      max_tokens: 4096
+    cost:
+      input_per_1k: 10.0
+      output_per_1k: 30.0
+    provider: "openai"
+
+  - name: o1_preview
+    display_name: "O1 Preview"
+    version: "o1-preview"
+    api_key_env: "OPENAI_API_KEY"
+    org_id_env: "OPENAI_ORG_ID"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Advanced reasoning"
+      - "Mathematical problem solving"
+      - "Coding capabilities"
+      - "Scientific reasoning"
+      - "Logical deduction"
+    defaults:
+      temperature: 0.7
+      top_p: 1.0
+      max_tokens: 4096
+    cost:
+      input_per_1k: 15.0
+      output_per_1k: 75.0
+    provider: "openai"
+
+  - name: o1_pro
+    display_name: "O1 Pro"
+    version: "o1-pro"
+    api_key_env: "OPENAI_API_KEY"
+    org_id_env: "OPENAI_ORG_ID"
+    max_tokens: 128000
+    context_window: 128000
+    strengths:
+      - "Advanced production capabilities"
+      - "Superior mathematical reasoning"
+      - "Complex problem solving"
+      - "Code generation excellence"
+      - "Optimization for professional use cases"
+    defaults:
+      temperature: 0.7
+      top_p: 1.0
+      max_tokens: 4096
+    cost:
+      input_per_1k: 30.0
+      output_per_1k: 90.0
+    provider: "openai"

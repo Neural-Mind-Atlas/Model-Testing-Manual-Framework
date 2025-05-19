@@ -1,0 +1,49 @@
+timestamp: '2025-05-20T04:07:25.963680'
+models_compared:
+- model_1
+- model_2
+metrics_compared:
+- average_processing_time_seconds
+- overall_score
+- total_cost_usd
+- total_tokens
+comparison_data:
+  model_1:
+    overall_score: 0.85
+    total_tokens: 300
+    total_cost_usd: 0.01
+    average_processing_time_seconds: 2.0
+  model_2:
+    overall_score: 0.75
+    total_tokens: 350
+    total_cost_usd: 0.015
+    average_processing_time_seconds: 2.5
+rankings:
+  average_processing_time_seconds:
+  - rank: 1
+    model: model_2
+    value: 2.5
+  - rank: 2
+    model: model_1
+    value: 2.0
+  overall_score:
+  - rank: 1
+    model: model_1
+    value: 0.85
+  - rank: 2
+    model: model_2
+    value: 0.75
+  total_cost_usd:
+  - rank: 1
+    model: model_2
+    value: 0.015
+  - rank: 2
+    model: model_1
+    value: 0.01
+  total_tokens:
+  - rank: 1
+    model: model_2
+    value: 350
+  - rank: 2
+    model: model_1
+    value: 300
