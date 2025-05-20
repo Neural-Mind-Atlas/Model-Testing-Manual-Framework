@@ -1,412 +1,643 @@
-Comprehensive Test Summary - 2025-05-20T13:48:13.244682
-================================================================================
-
-Environment Information:
-----------------------------------------
-Python version: 3.10.16 (main, Dec 11 2024, 16:24:50) [GCC 11.2.0]
-Output format: html
-Parallel execution: Enabled
-Models: All
-
-Test: factual - short
-  Status: FAILED
-  Duration: 1.03 seconds
-  Error: Traceback (most recent call last):
+(modeltest) [pmishra@pm-pc foundation_llms-main]$ python run_comprehensive_tests.py
+2025-05-20 13:48:13,244 - INFO - Starting comprehensive testing suite
+2025-05-20 13:48:13,244 - INFO - Test categories: factual, reasoning, meta_prompting, code, creative, ppt_writing, hallucination, image_prompts, instruction, context
+2025-05-20 13:48:13,244 - INFO - Context lengths: short, medium, long
+2025-05-20 13:48:13,244 - INFO - Output format: html
+2025-05-20 13:48:13,244 - INFO - Parallel execution: Enabled
+2025-05-20 13:48:13,244 - INFO - Testing all available models
+2025-05-20 13:48:13,244 - INFO - Starting comprehensive testing of 30 test configurations
+2025-05-20 13:48:13,244 - INFO - Starting test configuration: factual - short
+2025-05-20 13:48:13,244 - INFO - Running test: python -m src.main --all-models --test factual --context short --output html --parallel
+2025-05-20 13:48:14,278 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:14,278 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: factual - medium
-  Status: FAILED
-  Duration: 0.95 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:14,278 - INFO - Progress: 1/30 tests completed (3.3%)
+2025-05-20 13:48:16,280 - INFO - Starting test configuration: factual - medium
+2025-05-20 13:48:16,281 - INFO - Running test: python -m src.main --all-models --test factual --context medium --output html --parallel
+2025-05-20 13:48:17,233 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:17,233 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: factual - long
-  Status: FAILED
-  Duration: 0.96 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:17,233 - INFO - Progress: 2/30 tests completed (6.7%)
+2025-05-20 13:48:19,234 - INFO - Starting test configuration: factual - long
+2025-05-20 13:48:19,234 - INFO - Running test: python -m src.main --all-models --test factual --context long --output html --parallel
+2025-05-20 13:48:20,195 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:20,195 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: reasoning - short
-  Status: FAILED
-  Duration: 0.95 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:20,195 - INFO - Progress: 3/30 tests completed (10.0%)
+2025-05-20 13:48:22,197 - INFO - Starting test configuration: reasoning - short
+2025-05-20 13:48:22,197 - INFO - Running test: python -m src.main --all-models --test reasoning --context short --output html --parallel
+2025-05-20 13:48:23,148 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:23,148 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: reasoning - medium
-  Status: FAILED
-  Duration: 0.94 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:23,148 - INFO - Progress: 4/30 tests completed (13.3%)
+2025-05-20 13:48:25,150 - INFO - Starting test configuration: reasoning - medium
+2025-05-20 13:48:25,150 - INFO - Running test: python -m src.main --all-models --test reasoning --context medium --output html --parallel
+2025-05-20 13:48:26,090 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:26,090 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: reasoning - long
-  Status: FAILED
-  Duration: 0.97 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:26,090 - INFO - Progress: 5/30 tests completed (16.7%)
+2025-05-20 13:48:28,090 - INFO - Starting test configuration: reasoning - long
+2025-05-20 13:48:28,091 - INFO - Running test: python -m src.main --all-models --test reasoning --context long --output html --parallel
+2025-05-20 13:48:29,063 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:29,063 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: meta_prompting - short
-  Status: FAILED
-  Duration: 0.95 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:29,063 - INFO - Progress: 6/30 tests completed (20.0%)
+2025-05-20 13:48:31,064 - INFO - Starting test configuration: meta_prompting - short
+2025-05-20 13:48:31,064 - INFO - Running test: python -m src.main --all-models --test meta_prompting --context short --output html --parallel
+2025-05-20 13:48:32,013 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:32,014 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: meta_prompting - medium
-  Status: FAILED
-  Duration: 0.93 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:32,014 - INFO - Progress: 7/30 tests completed (23.3%)
+2025-05-20 13:48:34,016 - INFO - Starting test configuration: meta_prompting - medium
+2025-05-20 13:48:34,016 - INFO - Running test: python -m src.main --all-models --test meta_prompting --context medium --output html --parallel
+2025-05-20 13:48:34,945 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:34,945 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: meta_prompting - long
-  Status: FAILED
-  Duration: 0.97 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:34,945 - INFO - Progress: 8/30 tests completed (26.7%)
+2025-05-20 13:48:36,947 - INFO - Starting test configuration: meta_prompting - long
+2025-05-20 13:48:36,947 - INFO - Running test: python -m src.main --all-models --test meta_prompting --context long --output html --parallel
+2025-05-20 13:48:37,912 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:37,912 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: code - short
-  Status: FAILED
-  Duration: 0.99 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:37,912 - INFO - Progress: 9/30 tests completed (30.0%)
+2025-05-20 13:48:39,914 - INFO - Starting test configuration: code - short
+2025-05-20 13:48:39,914 - INFO - Running test: python -m src.main --all-models --test code --context short --output html --parallel
+2025-05-20 13:48:40,907 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:40,907 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: code - medium
-  Status: FAILED
-  Duration: 0.96 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:40,907 - INFO - Progress: 10/30 tests completed (33.3%)
+2025-05-20 13:48:42,909 - INFO - Starting test configuration: code - medium
+2025-05-20 13:48:42,910 - INFO - Running test: python -m src.main --all-models --test code --context medium --output html --parallel
+2025-05-20 13:48:43,870 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:43,870 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: code - long
-  Status: FAILED
-  Duration: 0.96 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:43,870 - INFO - Progress: 11/30 tests completed (36.7%)
+2025-05-20 13:48:45,870 - INFO - Starting test configuration: code - long
+2025-05-20 13:48:45,871 - INFO - Running test: python -m src.main --all-models --test code --context long --output html --parallel
+2025-05-20 13:48:46,831 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:46,831 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: creative - short
-  Status: FAILED
-  Duration: 1.02 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:46,831 - INFO - Progress: 12/30 tests completed (40.0%)
+2025-05-20 13:48:48,833 - INFO - Starting test configuration: creative - short
+2025-05-20 13:48:48,833 - INFO - Running test: python -m src.main --all-models --test creative --context short --output html --parallel
+2025-05-20 13:48:49,852 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:49,852 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: creative - medium
-  Status: FAILED
-  Duration: 0.94 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:49,852 - INFO - Progress: 13/30 tests completed (43.3%)
+2025-05-20 13:48:51,854 - INFO - Starting test configuration: creative - medium
+2025-05-20 13:48:51,854 - INFO - Running test: python -m src.main --all-models --test creative --context medium --output html --parallel
+2025-05-20 13:48:52,798 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:52,798 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: creative - long
-  Status: FAILED
-  Duration: 0.95 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:52,798 - INFO - Progress: 14/30 tests completed (46.7%)
+2025-05-20 13:48:54,800 - INFO - Starting test configuration: creative - long
+2025-05-20 13:48:54,800 - INFO - Running test: python -m src.main --all-models --test creative --context long --output html --parallel
+2025-05-20 13:48:55,749 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:55,750 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: ppt_writing - short
-  Status: FAILED
-  Duration: 0.94 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:55,750 - INFO - Progress: 15/30 tests completed (50.0%)
+2025-05-20 13:48:57,750 - INFO - Starting test configuration: ppt_writing - short
+2025-05-20 13:48:57,750 - INFO - Running test: python -m src.main --all-models --test ppt_writing --context short --output html --parallel
+2025-05-20 13:48:58,690 - ERROR - Test failed with exit code 1
+2025-05-20 13:48:58,690 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: ppt_writing - medium
-  Status: FAILED
-  Duration: 0.94 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:48:58,690 - INFO - Progress: 16/30 tests completed (53.3%)
+2025-05-20 13:49:00,693 - INFO - Starting test configuration: ppt_writing - medium
+2025-05-20 13:49:00,693 - INFO - Running test: python -m src.main --all-models --test ppt_writing --context medium --output html --parallel
+2025-05-20 13:49:01,638 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:01,638 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: ppt_writing - long
-  Status: FAILED
-  Duration: 0.95 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:01,638 - INFO - Progress: 17/30 tests completed (56.7%)
+2025-05-20 13:49:03,640 - INFO - Starting test configuration: ppt_writing - long
+2025-05-20 13:49:03,641 - INFO - Running test: python -m src.main --all-models --test ppt_writing --context long --output html --parallel
+2025-05-20 13:49:04,592 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:04,592 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: hallucination - short
-  Status: FAILED
-  Duration: 0.93 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:04,592 - INFO - Progress: 18/30 tests completed (60.0%)
+2025-05-20 13:49:06,594 - INFO - Starting test configuration: hallucination - short
+2025-05-20 13:49:06,594 - INFO - Running test: python -m src.main --all-models --test hallucination --context short --output html --parallel
+2025-05-20 13:49:07,521 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:07,521 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: hallucination - medium
-  Status: FAILED
-  Duration: 0.93 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:07,521 - INFO - Progress: 19/30 tests completed (63.3%)
+2025-05-20 13:49:09,523 - INFO - Starting test configuration: hallucination - medium
+2025-05-20 13:49:09,524 - INFO - Running test: python -m src.main --all-models --test hallucination --context medium --output html --parallel
+2025-05-20 13:49:10,457 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:10,457 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: hallucination - long
-  Status: FAILED
-  Duration: 0.95 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:10,457 - INFO - Progress: 20/30 tests completed (66.7%)
+2025-05-20 13:49:12,459 - INFO - Starting test configuration: hallucination - long
+2025-05-20 13:49:12,460 - INFO - Running test: python -m src.main --all-models --test hallucination --context long --output html --parallel
+2025-05-20 13:49:13,409 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:13,409 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: image_prompts - short
-  Status: FAILED
-  Duration: 0.95 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:13,409 - INFO - Progress: 21/30 tests completed (70.0%)
+2025-05-20 13:49:15,410 - INFO - Starting test configuration: image_prompts - short
+2025-05-20 13:49:15,411 - INFO - Running test: python -m src.main --all-models --test image_prompts --context short --output html --parallel
+2025-05-20 13:49:16,356 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:16,356 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: image_prompts - medium
-  Status: FAILED
-  Duration: 0.93 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:16,356 - INFO - Progress: 22/30 tests completed (73.3%)
+2025-05-20 13:49:18,357 - INFO - Starting test configuration: image_prompts - medium
+2025-05-20 13:49:18,357 - INFO - Running test: python -m src.main --all-models --test image_prompts --context medium --output html --parallel
+2025-05-20 13:49:19,286 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:19,286 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: image_prompts - long
-  Status: FAILED
-  Duration: 0.96 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:19,286 - INFO - Progress: 23/30 tests completed (76.7%)
+2025-05-20 13:49:21,287 - INFO - Starting test configuration: image_prompts - long
+2025-05-20 13:49:21,287 - INFO - Running test: python -m src.main --all-models --test image_prompts --context long --output html --parallel
+2025-05-20 13:49:22,247 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:22,247 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: instruction - short
-  Status: FAILED
-  Duration: 0.93 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:22,247 - INFO - Progress: 24/30 tests completed (80.0%)
+2025-05-20 13:49:24,249 - INFO - Starting test configuration: instruction - short
+2025-05-20 13:49:24,249 - INFO - Running test: python -m src.main --all-models --test instruction --context short --output html --parallel
+2025-05-20 13:49:25,182 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:25,182 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: instruction - medium
-  Status: FAILED
-  Duration: 0.92 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:25,183 - INFO - Progress: 25/30 tests completed (83.3%)
+2025-05-20 13:49:27,184 - INFO - Starting test configuration: instruction - medium
+2025-05-20 13:49:27,184 - INFO - Running test: python -m src.main --all-models --test instruction --context medium --output html --parallel
+2025-05-20 13:49:28,105 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:28,105 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: instruction - long
-  Status: FAILED
-  Duration: 0.92 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:28,105 - INFO - Progress: 26/30 tests completed (86.7%)
+2025-05-20 13:49:30,107 - INFO - Starting test configuration: instruction - long
+2025-05-20 13:49:30,107 - INFO - Running test: python -m src.main --all-models --test instruction --context long --output html --parallel
+2025-05-20 13:49:31,028 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:31,028 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: context - short
-  Status: FAILED
-  Duration: 0.93 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:31,028 - INFO - Progress: 27/30 tests completed (90.0%)
+2025-05-20 13:49:33,030 - INFO - Starting test configuration: context - short
+2025-05-20 13:49:33,031 - INFO - Running test: python -m src.main --all-models --test context --context short --output html --parallel
+2025-05-20 13:49:33,957 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:33,957 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: context - medium
-  Status: FAILED
-  Duration: 0.99 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:33,957 - INFO - Progress: 28/30 tests completed (93.3%)
+2025-05-20 13:49:35,959 - INFO - Starting test configuration: context - medium
+2025-05-20 13:49:35,960 - INFO - Running test: python -m src.main --all-models --test context --context medium --output html --parallel
+2025-05-20 13:49:36,949 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:36,949 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-Test: context - long
-  Status: FAILED
-  Duration: 0.94 seconds
-  Error: Traceback (most recent call last):
+2025-05-20 13:49:36,949 - INFO - Progress: 29/30 tests completed (96.7%)
+2025-05-20 13:49:38,950 - INFO - Starting test configuration: context - long
+2025-05-20 13:49:38,951 - INFO - Running test: python -m src.main --all-models --test context --context long --output html --parallel
+2025-05-20 13:49:39,891 - ERROR - Test failed with exit code 1
+2025-05-20 13:49:39,891 - ERROR - Error output: Traceback (most recent call last):
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
   File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
     from src.test_runner.executor import TestExecutor
-  File "/home/pmishra/Deskto...
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/__init__.py", line 3, in <module>
+    from .executor import TestExecutor
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/test_runner/executor.py", line 13, in <module>
+    from src.clients.base_client import BaseClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/__init__.py", line 6, in <module>
+    from .mistral_client import MistralClient
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/clients/mistral_client.py", line 5, in <module>
+    from mistralai.models.chat_completion import ChatMessage
+ModuleNotFoundError: No module named 'mistralai.models.chat_completion'
 
-
-Summary Statistics
-----------------------------------------
-Test started: 2025-05-20T13:48:13.244692
-Test completed: 2025-05-20T13:49:41.893954
-Total tests: 30
-Successful tests: 0
-Failed tests: 30
-Success rate: 0.0%
-Total duration: 1 minutes 28 seconds
-
-Failed Tests:
-  - factual - short
-  - factual - medium
-  - factual - long
-  - reasoning - short
-  - reasoning - medium
-  - reasoning - long
-  - meta_prompting - short
-  - meta_prompting - medium
-  - meta_prompting - long
-  - code - short
-  - code - medium
-  - code - long
-  - creative - short
-  - creative - medium
-  - creative - long
-  - ppt_writing - short
-  - ppt_writing - medium
-  - ppt_writing - long
-  - hallucination - short
-  - hallucination - medium
-  - hallucination - long
-  - image_prompts - short
-  - image_prompts - medium
-  - image_prompts - long
-  - instruction - short
-  - instruction - medium
-  - instruction - long
-  - context - short
-  - context - medium
-  - context - long
+2025-05-20 13:49:39,891 - INFO - Progress: 30/30 tests completed (100.0%)
+2025-05-20 13:49:41,893 - INFO - Generating model performance summary...
+2025-05-20 13:49:41,893 - WARNING - No result files found for model summary
+2025-05-20 13:49:41,894 - INFO - Comprehensive testing completed. Summary saved to ./results/comprehensive_test_summary_20250520_134813.txt
+2025-05-20 13:49:41,894 - INFO - Total duration: 1 minutes 28 seconds
+2025-05-20 13:49:41,894 - INFO - Success rate: 0/30 (0.0%)
