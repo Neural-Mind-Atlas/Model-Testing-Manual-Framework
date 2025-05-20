@@ -2,8 +2,13 @@
 """Base client class for interacting with LLM APIs."""
 
 import time
+import os
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional, Any
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 class BaseClient(ABC):
     """Abstract base class for all model API clients."""
@@ -37,6 +42,11 @@ class BaseClient(ABC):
             self.context_window = 4096
             self.defaults = {}
             self.cost_config = {}
+        
+        # Initialize tracking for API calls
+        self.last_usage = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
+        self.last_timing = {"total_time": 0, "time_to_first_token": None}
+        self.last_cost = 0
 
     @abstractmethod
     def generate(self, prompt: str, config: Optional[Dict[str, Any]] = None) -> str:
@@ -84,3 +94,26 @@ class BaseClient(ABC):
             "time_to_first_token": None if not first_token_time else first_token_time - start_time
         }
         return timing
+    
+    def get_last_usage(self) -> Dict[str, int]:
+        """Get token usage from last request."""
+        return self.last_usage
+
+    def get_last_timing(self) -> Dict[str, float]:
+        """Get timing information from last request."""
+        return self.last_timing
+
+    def get_last_cost(self) -> float:
+        """Get cost from last request."""
+        return self.last_cost
+    
+    def should_test(self) -> bool:
+        """
+        Check if this model family should be tested based on environment variables.
+        
+        Returns:
+            bool: True if this model family should be tested, False otherwise
+        """
+        env_var = f"TEST_{self.name.upper()}"
+        test_flag = os.getenv(env_var, "true").lower()
+        return test_flag == "true"

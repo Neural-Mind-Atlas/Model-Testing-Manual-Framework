@@ -4,11 +4,16 @@ import sys
 import argparse
 import yaml
 import logging
+import json
 from datetime import datetime
+from dotenv import load_dotenv
 from src.utils.config import load_config, get_model_config
 from src.test_runner.executor import TestExecutor
 from src.reporting.yaml_generator import YAMLReporter
 from src.test_runner.logger import TestLogger
+
+# Load environment variables
+load_dotenv()
 
 def setup_logging():
     """Configure logging for the application"""
@@ -16,8 +21,11 @@ def setup_logging():
     log_dir = "logs"
     os.makedirs(log_dir, exist_ok=True)
     
+    log_level_str = os.getenv("LOG_LEVEL", "INFO")
+    log_level = getattr(logging, log_level_str.upper(), logging.INFO)
+    
     logging.basicConfig(
-        level=logging.INFO,
+        level=log_level,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         handlers=[
             logging.FileHandler(os.path.join(log_dir, f"test_run_{timestamp}.log")),
@@ -98,8 +106,30 @@ def get_test_suite_config(test_category):
             return yaml.safe_load(file)
     return None
 
+def validate_api_keys(logger):
+    """Validate required API keys are set as environment variables"""
+    required_api_keys = {
+        "OPENAI_API_KEY": "OpenAI",
+        "ANTHROPIC_API_KEY": "Anthropic",
+        "GOOGLE_API_KEY": "Google",
+        "MISTRAL_API_KEY": "Mistral",
+        "COHERE_API_KEY": "Cohere"
+    }
+    
+    missing_keys = []
+    for env_var, provider in required_api_keys.items():
+        if not os.environ.get(env_var) and os.environ.get(f"TEST_{provider.upper()}", "true").lower() == "true":
+            missing_keys.append(f"{provider} ({env_var})")
+    
+    if missing_keys:
+        logger.warning(f"Missing API keys for: {', '.join(missing_keys)}")
+        logger.warning("Tests for these providers may fail. Set API keys in .env file or disable testing with TEST_{PROVIDER}=false")
+
 def main():
     logger = setup_logging()
+    
+    # Validate API keys
+    validate_api_keys(logger)
     
     parser = argparse.ArgumentParser(description="LLM Testing Framework")
     parser.add_argument('--model', type=str, help='Specific model to test')
@@ -116,6 +146,8 @@ def main():
     parser.add_argument('--verbose', action='store_true', help='Enable verbose logging')
     parser.add_argument('--eval-model', type=str, default='gpt_4o',
                         help='Model to use for evaluation (default: gpt_4o)')
+    parser.add_argument('--parallel', action='store_true', 
+                        help='Run tests in parallel (uses MAX_PARALLEL_REQUESTS from .env)')
 
     args = parser.parse_args()
 
@@ -178,35 +210,44 @@ def main():
     if eval_model_id and eval_model_id in available_models:
         eval_model_config = available_models[eval_model_id]
         executor.default_eval_model_id = eval_model_id
-    else:
-        logger.warning(f"Evaluation model {eval_model_id} not found. Using default evaluation.")
 
-    # Run tests for each model
-    results = {}
-    for model_id in valid_models:
-        logger.info(f"Testing model: {model_id}")
-        try:
-            model_config = available_models[model_id]
-            test_result = executor.run_test(
-                model_id=model_id,
-                model_config=model_config,
-                test_category=args.test,
-                context_length=args.context
-            )
-            results[model_id] = test_result
-            logger.info(f"Testing completed for {model_id}")
-        except Exception as e:
-            logger.error(f"Error testing model {model_id}: {e}", exc_info=True)
-            results[model_id] = {
-                "model_id": model_id,
-                "test_category": args.test,
-                "context_length": args.context,
-                "error": str(e)
-            }
+    # Create dictionary of models to test
+    models_dict = {model_id: available_models[model_id] for model_id in valid_models}
+    
+    # Run tests
+    if args.parallel:
+        results = executor.run_tests_parallel(models_dict, {
+            "test_categories": [args.test],
+            "context_lengths": [args.context]
+        })
+    else:
+        # Run tests for each model
+        results = {}
+        for model_id in valid_models:
+            logger.info(f"Testing model: {model_id}")
+            try:
+                model_config = available_models[model_id]
+                test_result = executor.run_test(
+                    model_id=model_id,
+                    model_config=model_config,
+                    test_category=args.test,
+                    context_length=args.context
+                )
+                results[model_id] = test_result
+                logger.info(f"Testing completed for {model_id}")
+            except Exception as e:
+                logger.error(f"Error testing model {model_id}: {e}", exc_info=True)
+                results[model_id] = {
+                    "model_id": model_id,
+                    "test_category": args.test,
+                    "context_length": args.context,
+                    "error": str(e)
+                }
 
     # Generate reports
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir = os.path.join("results", args.test)
+    results_dir = os.getenv("RESULTS_DIR", "./results")
+    output_dir = os.path.join(results_dir, args.test)
     os.makedirs(output_dir, exist_ok=True)
 
     # Choose reporter based on output format
@@ -265,10 +306,10 @@ def main():
     # Generate comparison report if multiple models were tested
     if len(valid_models) > 1:
         from src.reporting.comparisons_reporter import ModelComparison
-        comparisons_dir = os.path.join("results", "comparisons")
+        comparisons_dir = os.path.join(results_dir, "comparisons")
         os.makedirs(comparisons_dir, exist_ok=True)
         
-        comparison = ModelComparison(results_dir=os.path.dirname(output_dir))
+        comparison = ModelComparison(results_dir=results_dir)
         comparison_file = os.path.join(comparisons_dir, f"comparison_{args.test}_{args.context}_{timestamp}.yaml")
         
         try:
@@ -294,6 +335,19 @@ def main():
                 logger.info(f"Comparison report saved to {comparison_file}")
         except Exception as e:
             logger.error(f"Error generating comparison report: {e}", exc_info=True)
+            
+    # Generate visualizations
+    if len(valid_models) > 1:
+        try:
+            from src.reporting.visualizations_reporter import Visualizer
+            viz_dir = os.path.join(results_dir, "visualizations")
+            os.makedirs(viz_dir, exist_ok=True)
+            
+            visualizer = Visualizer(results_dir=results_dir)
+            visualizer.generate_report(results, viz_dir)
+            logger.info(f"Visualizations generated in {viz_dir}")
+        except Exception as e:
+            logger.error(f"Error generating visualizations: {e}", exc_info=True)
 
     logger.info("Testing completed successfully")
 

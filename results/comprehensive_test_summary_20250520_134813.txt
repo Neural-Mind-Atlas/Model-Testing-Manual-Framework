@@ -1,0 +1,412 @@
+Comprehensive Test Summary - 2025-05-20T13:48:13.244682
+================================================================================
+
+Environment Information:
+----------------------------------------
+Python version: 3.10.16 (main, Dec 11 2024, 16:24:50) [GCC 11.2.0]
+Output format: html
+Parallel execution: Enabled
+Models: All
+
+Test: factual - short
+  Status: FAILED
+  Duration: 1.03 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: factual - medium
+  Status: FAILED
+  Duration: 0.95 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: factual - long
+  Status: FAILED
+  Duration: 0.96 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: reasoning - short
+  Status: FAILED
+  Duration: 0.95 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: reasoning - medium
+  Status: FAILED
+  Duration: 0.94 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: reasoning - long
+  Status: FAILED
+  Duration: 0.97 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: meta_prompting - short
+  Status: FAILED
+  Duration: 0.95 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: meta_prompting - medium
+  Status: FAILED
+  Duration: 0.93 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: meta_prompting - long
+  Status: FAILED
+  Duration: 0.97 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: code - short
+  Status: FAILED
+  Duration: 0.99 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: code - medium
+  Status: FAILED
+  Duration: 0.96 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: code - long
+  Status: FAILED
+  Duration: 0.96 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: creative - short
+  Status: FAILED
+  Duration: 1.02 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: creative - medium
+  Status: FAILED
+  Duration: 0.94 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: creative - long
+  Status: FAILED
+  Duration: 0.95 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: ppt_writing - short
+  Status: FAILED
+  Duration: 0.94 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: ppt_writing - medium
+  Status: FAILED
+  Duration: 0.94 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: ppt_writing - long
+  Status: FAILED
+  Duration: 0.95 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: hallucination - short
+  Status: FAILED
+  Duration: 0.93 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: hallucination - medium
+  Status: FAILED
+  Duration: 0.93 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: hallucination - long
+  Status: FAILED
+  Duration: 0.95 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: image_prompts - short
+  Status: FAILED
+  Duration: 0.95 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: image_prompts - medium
+  Status: FAILED
+  Duration: 0.93 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: image_prompts - long
+  Status: FAILED
+  Duration: 0.96 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: instruction - short
+  Status: FAILED
+  Duration: 0.93 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: instruction - medium
+  Status: FAILED
+  Duration: 0.92 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: instruction - long
+  Status: FAILED
+  Duration: 0.92 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: context - short
+  Status: FAILED
+  Duration: 0.93 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: context - medium
+  Status: FAILED
+  Duration: 0.99 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+Test: context - long
+  Status: FAILED
+  Duration: 0.94 seconds
+  Error: Traceback (most recent call last):
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/pmishra/anaconda3/envs/modeltest/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/pmishra/Desktop/foundation_llms-main/foundation_llms-main/src/main.py", line 11, in <module>
+    from src.test_runner.executor import TestExecutor
+  File "/home/pmishra/Deskto...
+
+
+Summary Statistics
+----------------------------------------
+Test started: 2025-05-20T13:48:13.244692
+Test completed: 2025-05-20T13:49:41.893954
+Total tests: 30
+Successful tests: 0
+Failed tests: 30
+Success rate: 0.0%
+Total duration: 1 minutes 28 seconds
+
+Failed Tests:
+  - factual - short
+  - factual - medium
+  - factual - long
+  - reasoning - short
+  - reasoning - medium
+  - reasoning - long
+  - meta_prompting - short
+  - meta_prompting - medium
+  - meta_prompting - long
+  - code - short
+  - code - medium
+  - code - long
+  - creative - short
+  - creative - medium
+  - creative - long
+  - ppt_writing - short
+  - ppt_writing - medium
+  - ppt_writing - long
+  - hallucination - short
+  - hallucination - medium
+  - hallucination - long
+  - image_prompts - short
+  - image_prompts - medium
+  - image_prompts - long
+  - instruction - short
+  - instruction - medium
+  - instruction - long
+  - context - short
+  - context - medium
+  - context - long

@@ -5,11 +5,17 @@ import yaml
 import logging
 import time
 from typing import Dict, List, Any, Optional
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from dotenv import load_dotenv
 
-from src.utils.config import load_model_client, get_model_config, load_evaluation_metrics
+from src.utils.config import load_model_client, get_model_config
 from src.utils.tokenizers import count_tokens
 from src.clients.base_client import BaseClient
 from src.utils.cost_tracker import calculate_cost
+from src.test_runner.retry import RetryHandler
+
+# Load environment variables
+load_dotenv()
 
 class TestExecutor:
     """Executes tests for different models and test categories."""
@@ -18,11 +24,17 @@ class TestExecutor:
         """Initialize the test executor."""
         self.logger = logging.getLogger(__name__)
         self.results = {}
-        self.metrics_config = load_evaluation_metrics()
         
         # Default evaluation model - can be overridden in test configuration
         self.default_eval_model_id = "gpt_4o"
         self.eval_model = None
+        
+        # Get parallel settings from environment
+        self.max_parallel_requests = int(os.getenv("MAX_PARALLEL_REQUESTS", "5"))
+        self.request_delay_ms = int(os.getenv("REQUEST_DELAY_MS", "500"))
+        
+        # Initialize retry handler
+        self.retry_handler = RetryHandler()
 
     def load_test_data(self, test_category: str, context_length: str) -> Dict[str, str]:
         """Load test data for a specific test category and context length."""
@@ -144,6 +156,15 @@ class TestExecutor:
                 "context_length": context_length,
                 "error": f"Failed to initialize client for {model_id} with provider {model_config.get('provider', 'unknown')}"
             }
+            
+        # Check if this model should be tested
+        if not client.should_test():
+            return {
+                "model_id": model_id,
+                "test_category": test_category,
+                "context_length": context_length,
+                "error": f"Testing disabled for model {model_id} (provider: {client.name})"
+            }
 
         # Form the full prompt
         full_prompt = f"{test_data['context']}\n\n{test_data['prompt']}"
@@ -152,20 +173,43 @@ class TestExecutor:
             # Record start time
             start_time = time.time()
             
-            # Generate response
+            # Generate response with retry handler
             self.logger.info(f"Generating response from {model_id}")
-            response = client.generate(full_prompt, model_config)
+            
+            response = self.retry_handler.with_retry(
+                lambda: client.generate(full_prompt, model_config),
+                max_retries=3
+            )
             
             # Record end time
             end_time = time.time()
             
-            # Calculate token usage (approximate)
-            prompt_tokens = count_tokens(full_prompt, model_id)
-            completion_tokens = count_tokens(response, model_id)
-            total_tokens = prompt_tokens + completion_tokens
+            # Get usage, timing, and cost data from client
+            usage = client.get_last_usage()
+            timing = client.get_last_timing()
+            cost = client.get_last_cost()
             
-            # Calculate cost
-            cost = client.calculate_cost(prompt_tokens, completion_tokens)
+            # If usage data wasn't provided by client, estimate it
+            if not usage["total_tokens"]:
+                prompt_tokens = count_tokens(full_prompt, model_id)
+                completion_tokens = count_tokens(response, model_id)
+                total_tokens = prompt_tokens + completion_tokens
+                usage = {
+                    "prompt_tokens": prompt_tokens,
+                    "completion_tokens": completion_tokens,
+                    "total_tokens": total_tokens
+                }
+                
+            # If timing wasn't captured, use our start/end times
+            if not timing["total_time"]:
+                timing = {
+                    "total_time": end_time - start_time,
+                    "time_to_first_token": None
+                }
+                
+            # If cost wasn't calculated, do it now
+            if not cost:
+                cost = client.calculate_cost(usage["prompt_tokens"], usage["completion_tokens"])
             
             # Initialize evaluation model if needed
             eval_model = self.get_evaluation_model(model_config)
@@ -215,7 +259,7 @@ class TestExecutor:
                 if "overall_score" in result:
                     overall_scores.append(result["overall_score"])
                     
-            elif test_category == "creative" or test_category == "ppt_writing" or test_category == "meta_prompting" or test_category == "image_prompts":
+            elif test_category in ["creative", "ppt_writing", "meta_prompting", "image_prompts"]:
                 # If no specific evaluator, use a reasonable default
                 from src.evaluators.prompt_quality_evaluator import PromptQualityEvaluator
                 evaluator = PromptQualityEvaluator(eval_model)
@@ -240,15 +284,8 @@ class TestExecutor:
             from src.evaluators.efficiency_evaluator import EfficiencyEvaluator
             efficiency_evaluator = EfficiencyEvaluator()
             response_data = {
-                "usage": {
-                    "prompt_tokens": prompt_tokens,
-                    "completion_tokens": completion_tokens,
-                    "total_tokens": total_tokens
-                },
-                "timing": {
-                    "total_time": end_time - start_time,
-                    "time_to_first_token": None  # Not tracked in this implementation
-                },
+                "usage": usage,
+                "timing": timing,
                 "cost": cost
             }
             
@@ -269,14 +306,8 @@ class TestExecutor:
                 "overall_score": overall_score,
                 "metrics": metrics,
                 "response_sample": response[:500] + "..." if len(response) > 500 else response,
-                "usage": {
-                    "prompt_tokens": prompt_tokens,
-                    "completion_tokens": completion_tokens,
-                    "total_tokens": total_tokens
-                },
-                "timing": {
-                    "total_time": end_time - start_time
-                },
+                "usage": usage,
+                "timing": timing,
                 "cost": cost
             }
         except Exception as e:
@@ -304,6 +335,9 @@ class TestExecutor:
                     if test_category not in model_results:
                         model_results[test_category] = {}
                     model_results[test_category][context_length] = test_result
+                    
+                    # Add a small delay between tests to avoid rate limits
+                    time.sleep(self.request_delay_ms / 1000)
 
             # Calculate overall model score
             overall_scores = []
@@ -320,4 +354,81 @@ class TestExecutor:
             results[model_id] = model_results
             self.logger.info(f"Testing completed for {model_id}")
 
+        return results
+        
+    def run_tests_parallel(self, models: Dict[str, Dict[str, Any]], test_suite: Dict[str, Any]) -> Dict[str, Any]:
+        """Run tests for multiple models in parallel."""
+        results = {}
+        test_tasks = []
+        
+        # Create list of test tasks
+        for model_id, model_config in models.items():
+            for test_category in test_suite.get("test_categories", ["ppt_generation"]):
+                for context_length in test_suite.get("context_lengths", ["short"]):
+                    test_tasks.append({
+                        "model_id": model_id,
+                        "model_config": model_config,
+                        "test_category": test_category,
+                        "context_length": context_length
+                    })
+        
+        # Run tests in parallel
+        with ThreadPoolExecutor(max_workers=self.max_parallel_requests) as executor:
+            futures = {}
+            for task in test_tasks:
+                future = executor.submit(
+                    self.run_test,
+                    task["model_id"],
+                    task["model_config"],
+                    task["test_category"],
+                    task["context_length"]
+                )
+                futures[future] = task
+            
+            for future in as_completed(futures):
+                task = futures[future]
+                model_id = task["model_id"]
+                test_category = task["test_category"]
+                context_length = task["context_length"]
+                
+                try:
+                    result = future.result()
+                    
+                    if model_id not in results:
+                        results[model_id] = {}
+                    if test_category not in results[model_id]:
+                        results[model_id][test_category] = {}
+                        
+                    results[model_id][test_category][context_length] = result
+                    self.logger.info(f"Completed test for {model_id}, {test_category}, {context_length}")
+                
+                except Exception as e:
+                    self.logger.error(f"Error in test for {model_id}: {e}")
+                    
+                    if model_id not in results:
+                        results[model_id] = {}
+                    if test_category not in results[model_id]:
+                        results[model_id][test_category] = {}
+                        
+                    results[model_id][test_category][context_length] = {
+                        "model_id": model_id,
+                        "test_category": test_category,
+                        "context_length": context_length,
+                        "error": str(e)
+                    }
+        
+        # Calculate overall model scores
+        for model_id, model_results in results.items():
+            overall_scores = []
+            for category_results in model_results.values():
+                if isinstance(category_results, dict):  # Skip if not a dictionary of results
+                    for result in category_results.values():
+                        if isinstance(result, dict) and "overall_score" in result:
+                            overall_scores.append(result["overall_score"])
+
+            if overall_scores:
+                results[model_id]["overall_score"] = sum(overall_scores) / len(overall_scores)
+            else:
+                results[model_id]["overall_score"] = None
+        
         return results

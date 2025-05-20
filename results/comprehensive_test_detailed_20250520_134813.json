@@ -1,0 +1,189 @@
+{
+  "timestamp": "20250520_134813",
+  "total_tests": 30,
+  "successful_tests": 0,
+  "failed_tests": 30,
+  "duration": 88.64924693107605,
+  "test_results": {
+    "factual": {
+      "short": {
+        "success": false,
+        "duration": 1.034001111984253,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9516985416412354,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.9609339237213135,
+        "returncode": 1
+      }
+    },
+    "reasoning": {
+      "short": {
+        "success": false,
+        "duration": 0.9506585597991943,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9392917156219482,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.9724810123443604,
+        "returncode": 1
+      }
+    },
+    "meta_prompting": {
+      "short": {
+        "success": false,
+        "duration": 0.9493021965026855,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9288053512573242,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.9650509357452393,
+        "returncode": 1
+      }
+    },
+    "code": {
+      "short": {
+        "success": false,
+        "duration": 0.9925897121429443,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9602217674255371,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.9597091674804688,
+        "returncode": 1
+      }
+    },
+    "creative": {
+      "short": {
+        "success": false,
+        "duration": 0.9796159267425537,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9440715312957764,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.9488725662231445,
+        "returncode": 1
+      }
+    },
+    "ppt_writing": {
+      "short": {
+        "success": false,
+        "duration": 0.9398574829101562,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9446570873260498,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.950855016708374,
+        "returncode": 1
+      }
+    },
+    "hallucination": {
+      "short": {
+        "success": false,
+        "duration": 0.9266359806060791,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9333088397979736,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.9492542743682861,
+        "returncode": 1
+      }
+    },
+    "image_prompts": {
+      "short": {
+        "success": false,
+        "duration": 0.945488452911377,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9283466339111328,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.9593372344970703,
+        "returncode": 1
+      }
+    },
+    "instruction": {
+      "short": {
+        "success": false,
+        "duration": 0.9331502914428711,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9210934638977051,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.9204003810882568,
+        "returncode": 1
+      }
+    },
+    "context": {
+      "short": {
+        "success": false,
+        "duration": 0.9263772964477539,
+        "returncode": 1
+      },
+      "medium": {
+        "success": false,
+        "duration": 0.9892537593841553,
+        "returncode": 1
+      },
+      "long": {
+        "success": false,
+        "duration": 0.940284252166748,
+        "returncode": 1
+      }
+    }
+  },
+  "model_summary": {
+    "models": {},
+    "test_categories": {},
+    "overall": {
+      "best_model": null,
+      "average_score": 0,
+      "total_tests": 0,
+      "successful_tests": 0
+    }
+  }
+}
